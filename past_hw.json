@@ -1,0 +1,11 @@
+[
+	{"tag":"ivb_ell_old", "description":"These verbs ending in -ell, go to -old in the SIMPLE PAST. sell -> sold; tell -> told", "level":"A2"},
+	{"tag":"ivb_i_o", "description":"These verbs containing -i- change to -o- in the SIMPLE PAST. drive -> drove; ride -> rode; rise -> rose; write -> wrote;" , "level":"A2"},
+	{"tag":"ivb_o", "description":"Several important verbs take an -o- stem in the SIMPLE PAST. break -> broke; choose -> chose; forget -> forgot; freeze -> froze; get -> got; speak -> spoke; steal -> stole; tear -> tore; wake -> woke; wear -> wore;" , "level":"A2"},
+	{"tag":"ivb_vital", "description":"70% of verbs in English are irregular.  The following are vital: be -> was; do -> did; go -> went; have -> had; make -> made;", "level":"A1"},
+	{"tag":"ivb_ee_e", "description":"verbs with a 'long e' (an 'ee' sound) often take a 'short e' in the SIMPLE PAST.  These include keep->kept; sleep->slept; feel->felt; bleed->bled; feed->fed; meet->met; lead(say 'leed')->led; CAUTION! need -> needed.", "level":"A2"},
+	{"tag":"ivb_i_u", "description":"some verbs with an -i- change to -u- in the SIMPLE PAST.  These include dig->dug; stick->stuck; spin-spun; sting-stung; swing->swung;", "level":"A2"},
+	{"tag":"ivb_oddballs", "description":"The verb 'strike' is highly strange and becomes 'struck' in the SIMPLE PAST.", "level":"B1"},
+	{"tag":"ivb_generic", "description":"I wasn't able to identify all the problems you had.  More info on verbs is available here...", "level":"A1"},
+	{"tag":"ivb_prefixes", "description":"I wasn't able to identify all the problems you had.  More info on verbs is available here...", "level":"C1"}
+]	

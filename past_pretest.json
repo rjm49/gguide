@@ -1,0 +1,12 @@
+[
+	{"initial":"I ____ (sleep) well.","last":null,"attempt":null,"score":null,"level":"A1", "tag":"ivb_ee_e"},
+	{"initial":"You ____ (go) home.","last":null,"attempt":null,"score":null,"level":"A1", "tag":"ivb_vital"},
+	{"initial":"He ____ (hold) an umbrella.","last":null,"attempt":null,"score":null,"level":"A2", "tag":"ivb_oddballs"},
+	{"initial":"She ____ (mean) to call you.","last":null,"attempt":null,"score":null,"level":"A2", "tag":"ivb_ee_e"},
+	{"initial":"The cream ____ (rise) to the top.","last":null,"attempt":null,"score":null,"level":"B1", "tag":"ivb_i_o"},
+	{"initial":"The ship ____ (strike) the iceberg.","last":null,"attempt":null,"score":null,"level":"B1", "tag":"ivb_oddballs"},
+	{"initial":"We ____ (overcome) the challenge.","last":null,"attempt":null,"score":null,"level":"B2", "tag":"ivb_prefixes"},
+	{"initial":"We ____ (retake) the test.","last":null,"attempt":null,"score":null,"level":"B2", "tag":"ivb_prefixes"},
+	{"initial":"You ____ (awake) very early.","last":null,"attempt":null,"score":null,"level":"C1", "tag":"ivb_oddballs"},
+	{"initial":"They ____ (spin) around each other.","last":null,"attempt":null,"score":null,"level":"C1", "tag":"ivb_i_u"}
+]

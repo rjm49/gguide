@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile /home/rjm49/gg_test.htpasswd
+Require valid-user
+</Files>

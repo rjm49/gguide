@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grammar Guide</title>
+<link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+<link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="extra.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+</head>
+<body>
+	<div class="container">
+		<span data-bind="visible: phase()=='pretest'"><label>Author ID:</label><input data-bind="value: author_id"></input> <label>Track:</label><select data-bind="options: tracks, value: track"></select> <label>Concept:</label><select data-bind="options: concepts"></select></span>
+		<button data-bind="click: resetPhase">Reset</button>
+		
+		<p><span data-bind="text: author_id"></span> / <span data-bind="text: track"></span> / <span data-bind="text: phase"></span></p>
+	</div>
+	
+	<div id="questionnaire" class="container" data-bind="with: questions, visible: app.phase()!='homework'">
+		
+		<H1>Grammar Guide</H1>
+		<p>Welcome to the Grammar Guide, and thanks for helping us test this very early version!</p>
+		<p>When you write your answers, we send them to our clever elves, who check your English. The elves will then give you feedback and recommend exercises to help you improve your score, and you can try again!</p>
+
+		<div class="row row-centered">
+			<div class="col-md-6 col-centered center-block">
+				<h2>Questions (approx 20min)</h2>
+				<p>Please put the following sentences into the "simple past" tense. <strong>You must write the sentences out in full!</strong>
+				</p>
+				<hr>
+				<ul data-bind="foreach: allItems">
+					<li>
+						<div class="view">
+							<p data-bind="text: initial"></p>
+
+							<div data-bind="visible: score()!=null">
+								<label data-bind="style: {backgroundColor: scoreToHSL(score()) }, text: attempt"></label> | <label data-bind="text: Number(score()).toFixed(2)"></label>
+								<!-- 							<p style="color:teal;" data-bind="visible: (score()<0 && $parent.phase()=='pretest')">This is a level <span data-bind="text: level"></span> question. We will help you get there!</p> -->
+							</div>
+
+							<input class="exercise-input" type="text" data-bind="visible: ($root.phase()=='pretest' || $root.phase()=='posttest') , value: next"></input>
+							<hr>
+						</div>
+					</li>
+
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div id="homework" class="container" data-bind="with: homework, visible: app.phase()=='homework'">
+		<div class="row row-centered" data-bind="visible: $root.track()=='B'">
+			<H2>Thanks!</H2>
+			<p>We appreciate your answers - they really help us! Please take a short break, and think about the exercises you just did.</p>
+			<p>
+				After <strong>20 minutes</strong>, please continue to the next set of questions.
+			</p>
+		</div>
+
+		<div class="row row-centered" data-bind="visible: $root.track()!='B'">
+			<div class="col-md-6 col-centered center-block">
+				<ul data-bind="foreach: allItems">
+					<li>
+						<div data-bind="html: html"></div>
+						<hr>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="buttons" class="container">
+		<p>
+			<button data-bind="click: nextPhase, visible: phase()!='finished' " type="button" class="btn btn-primary center-block">Next</button>
+		</p>
+		<p data-bind="text: phase"></p>		
+	</div>
+
+	<!--   <script src="../json2.js"></script> -->
+	<script src="jquery.js"></script>
+	<script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<script src="knockout-3.4.0.js"></script>
+	<script src="underscore.js"></script>
+	<script src="backbone.js"></script>
+	<script src="backbone.localStorage.js"></script>
+	<script src="models.js"></script>
+	<script src="logger.js"></script>
+	<script src="rpc.js"></script>
+	<script src="gg.js"></script>
+</body>
+</html>
