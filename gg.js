@@ -42,6 +42,7 @@ var app = new AppViewModel();
 ko.applyBindings(app);
 
 var logger = new Logger(app);
+logger.log("loading gg page");
 
 var nextPhase = function(){	
 	var gotoPostTest = function(){
@@ -85,7 +86,7 @@ var resetPhase = function() {
 };
 
 var wi_handler = function(wi_rsp) {
-	console.log("wi_handler called");
+	console.log(wi_rsp);
 	var scores = wi_rsp["sentence_scores"];
 	console.log(scores);
 	var i = 0;
@@ -101,11 +102,13 @@ var wi_handler = function(wi_rsp) {
 		item.attempt(item.next());
 		item.next(null);
 
-		logger.log(JSON.stringify(item));
+		//logger.log(JSON.stringify(item));
+		logger.log(i+", "+item.initial()+", "+item.attempt()+", "+score);	
 	});
-
 //	localStorage.setItem("ats_gg_needs_help", ko.toJSON(needs_help));
 };
+
+
 
 var ajaxh = new AJAXHelper(parent, logger, wi_handler);
 var submit = function(){

@@ -5,20 +5,48 @@ function getEpochTimeStamp(date){
 var Logger = function(app){
 	var self = this;
 	this.msgs = ko.observableArray([]).extend({ rateLimit: 500 });
+	this.log_url = "http://rjm49.dreamhosters.com/gg_test/lm.php";
+	
+	this.sendToServer = function(msg){
+		
+//		var log_chunk = localStorage.getItem('ats_gg_log');
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', self.log_url);
+		console.log("POSTing to server: " + self.log_url);
+		//xhr.setRequestHeader('X-Proxy-URL', call_url);
+		xhr.onload = function() {
+			if (xhr.readyState === xhr.DONE) {
+		        if (xhr.status === 200) {
+		        	console.log("Logging call successful: "+ xhr.response);
+		        }else{
+		        	console.log("Logging call failed " + xhr.response);
+		        }
+	        }
+		};
+		
+		xhr.send(msg);			
+	};
+
 	
 	this.log = function(msg){
 		console.log(msg);
 		var this_date = new Date();
-		var s = this_date.toISOString() + " " + getEpochTimeStamp(this_date) + " " + app.author_id() + " " + app.track() + " " + app.phase()+ "| " + msg;
-		self.msgs.push(s);
+		var s = this_date.toISOString() + " " + getEpochTimeStamp(this_date) + " " + app.author_id() + " " + app.track() + " " + app.phase()+ "| " + msg + "\n";
+	//	self.msgs.push(s);
+	
+		self.sendToServer(s);
 	};
 	
-    this.msgs.subscribe(function(newValue) {
-  	   if(newValue) {
-  		   localStorage.setItem('ats_gg_log', ko.toJSON(newValue));
-  	   }
-  	});
+//    this.msgs.subscribe(function(newValue) {
+//  	   if(newValue) {
+////  		   localStorage.setItem('ats_gg_log', ko.toJSON(newValue));
+//  		   self.sendToServer();
+//  	   }
+//  	});
 };
+
+
 
 
 var renderLog = function(){
