@@ -84,7 +84,11 @@
 		<p data-bind="text: phase"></p>		
 	</div>
 
-	<div class="overlay" data-bind="visible: net_waiting">Please wait...</div>
+	<div class="overlay" data-bind="style: { height: net_waiting() ==false ? '0' : '100%' }">
+		<div class="overlay-content">
+			Please wait...
+		</div>
+	</div>
 
 	<!--   <script src="../json2.js"></script> -->
 	<script src="jquery.js"></script>

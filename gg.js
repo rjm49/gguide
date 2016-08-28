@@ -21,6 +21,7 @@ var AppViewModel = function(){
 	this.track = ko.observable('S');
 	this.phase = ko.observable('pretest');
 	this.author_id = ko.observable('test1');
+	this.net_waiting = ko.observable(false);
 	
 	this.track.subscribe(function(newValue) {
 		if (newValue) { // Has focus
@@ -83,6 +84,7 @@ var resetPhase = function() {
 //	localStorage.setItem('ats_gg_phase', 'pretest');
 	app.phase('pretest');
 	app.questions.loadQuestions(app.phase());
+	app.net_waiting(false);
 };
 
 var wi_handler = function(wi_rsp) {
@@ -106,12 +108,14 @@ var wi_handler = function(wi_rsp) {
 		logger.log(i+", "+item.initial()+", "+item.attempt()+", "+score);	
 	});
 //	localStorage.setItem("ats_gg_needs_help", ko.toJSON(needs_help));
+	app.net_waiting(false); // deactivate the overlay so the user can continue
 };
 
 
 
 var ajaxh = new AJAXHelper(parent, logger, wi_handler);
 var submit = function(){
+	app.net_waiting(true);
 	ajaxh.submit(app.author_id(), app.questions.allItems());
 };
 
