@@ -1,11 +1,22 @@
-var Exercise = function(_initial, _attempt, _score, _next, _level, _tag) {
+var Exercise = function(_initial, _hint, _score, _attempt, _level, _tag, _target) {
 	var self = this;
 	self.initial = ko.observable(_initial);
-	self.attempt = ko.observable(_attempt);
+	self.hint = ko.observable(_hint);
 	self.score = ko.observable(_score);
-	self.next = ko.observable(_next);
+	self.attempt = ko.observable(_attempt);
 	self.level = ko.observable(_level);
 	self.tag = _tag;
+	self.target = _target;
+	
+	self.buildAnswer = function(){
+		var sarr = self.initial().split("$"); // creates an array of strings, should be just two pieces
+		var ans = sarr[0]+ self.attempt() +sarr[1];
+		return ans;
+	}
+	
+	self.isPass = function(){
+		return (self.score() >= self.target ? true : false); 
+	}
 };
 
 var ExerciseListModel = function() {
@@ -28,8 +39,8 @@ var ExerciseListModel = function() {
 		$.getJSON("past_" + phase + ".json", function(json) {
 			console.log(json); // this will show the info it in firebug console
 			ko.utils.arrayForEach(json, function(item) {
-				self.allItems.push(new Exercise(item.initial, item.attempt,
-						item.score, "This is a test sentence.", item.level, item.tag));
+				self.allItems.push(new Exercise(item.initial, item.hint,
+						null, "", item.level, item.tag, item.target));
 			});
 		});
 	}

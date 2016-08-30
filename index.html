@@ -32,20 +32,22 @@
 		<div class="row row-centered">
 			<div class="col-md-6 col-centered center-block">
 				<h2>Questions (approx 20min)</h2>
-				<p>Please put the following sentences into the "simple past" tense. <strong>You must write the sentences out in full!</strong>
-				</p>
+				<p>Please fill the gaps to put the following sentences into the "simple past" tense.</p>
 				<hr>
 				<ul data-bind="foreach: allItems">
 					<li>
 						<div class="view">
-							<p data-bind="text: initial"></p>
 
-							<div data-bind="visible: score()!=null">
-								<label data-bind="style: {backgroundColor: scoreToHSL(score()) }, text: attempt"></label> | <label data-bind="text: Number(score()).toFixed(2)"></label>
-								<!-- 							<p style="color:teal;" data-bind="visible: (score()<0 && $parent.phase()=='pretest')">This is a level <span data-bind="text: level"></span> question. We will help you get there!</p> -->
+							<div data-bind="visible: score()==null">
+							<p><span data-bind="text: initial().split('$')[0]"></span>_____<span data-bind="text: initial().split('$')[1]"></span> <span data-bind="text: hint"></span></p>
+							<p><input class="exercise-input" type="text" data-bind="value: attempt" placeholder="your guess here.."></input></p>
 							</div>
 
-							<input class="exercise-input" type="text" data-bind="visible: ($root.phase()=='pretest' || $root.phase()=='posttest') , value: next"></input>
+							<div data-bind="visible: score()!=null">
+								<label data-bind="style: {backgroundColor: scoreToHSL(score()) }, text: buildAnswer()"></label> | <label data-bind="text: isPass() ? 'OK!' : 'Oops..' "></label>
+								<p><span data-bind="text: score"></span>/<span data-bind="text: target"></span></p>
+							</div>
+
 							<hr>
 						</div>
 					</li>
@@ -84,9 +86,11 @@
 		<p data-bind="text: phase"></p>		
 	</div>
 
-	<div class="overlay" data-bind="style: { height: net_waiting() ==false ? '0' : '100%' }">
+	<div class="overlay" data-bind="style: { height: net_waiting() ==true ? '100%' : '0' }">
 		<div class="overlay-content">
-			Please wait...
+			Fetching answers!
+			<br>
+			<img src="./pugrun.gif">
 		</div>
 	</div>
 
@@ -98,5 +102,6 @@
 	<script src="logger.js"></script>
 	<script src="rpc.js"></script>
 	<script src="gg.js"></script>
+
 </body>
 </html>

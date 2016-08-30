@@ -29,7 +29,7 @@ var AJAXHelper = function(parent, logger, _handler){
 			
 			console.log(item);
 			
-			var txt = item.next(); //extract the user's latest effort
+			var txt = item.buildAnswer(); //extract the user's latest effort
 			in_str = in_str.concat(txt).concat(" ");
 		});
 		

@@ -101,11 +101,11 @@ var wi_handler = function(wi_rsp) {
 
 		console.log(score);
 		item.score(score);
-		item.attempt(item.next());
-		item.next(null);
+//		item.attempt(item.next());
+//		item.next(null);
 
 		//logger.log(JSON.stringify(item));
-		logger.log(i+", "+item.initial()+", "+item.attempt()+", "+score);	
+		logger.log(i+", "+item.initial()+", "+item.hint()+", "+item.buildAnswer()+", "+score+", "+item.target);	
 	});
 //	localStorage.setItem("ats_gg_needs_help", ko.toJSON(needs_help));
 	app.net_waiting(false); // deactivate the overlay so the user can continue
@@ -121,3 +121,8 @@ var submit = function(){
 
 resetPhase();
 app.homework.loadHWFile();
+
+////do a "hard unhide" of the overlay
+//$(function () {
+//    $('.overlay').removeClass('hidden');
+//});
