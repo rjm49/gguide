@@ -15,6 +15,10 @@ var Exercise = function(_initial, _hint, _score, _attempt, _level, _tag, _target
 	}
 	
 	self.isPass = function(){
+		console.log("self.attempt()=="+self.attempt());
+		if(self.attempt()==null || self.attempt()==""){
+			return false;
+		}
 		return (self.score() >= self.target ? true : false); 
 	}
 };
@@ -107,9 +111,8 @@ var HomeworkListModel = function() {
 		ko.utils.arrayForEach(items, function(item) {
 
 			var tag = item.tag;
-			var item_score = item.score();
 			
-			if (track == "S" || (track == "A" && item_score < 0)) { //tests eligibility
+			if (track == "S" || (track == "A" && !item.isPass())) { //tests eligibility
 				if (already_here.indexOf(tag) < 0) { //prevents duplicates
 					already_here.push(tag);
 

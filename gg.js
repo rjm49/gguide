@@ -105,7 +105,8 @@ var wi_handler = function(wi_rsp) {
 //		item.next(null);
 
 		//logger.log(JSON.stringify(item));
-		logger.log(i+", "+item.initial()+", "+item.hint()+", "+item.buildAnswer()+", "+score+", "+item.target);	
+		var SEP = ",";
+		logger.log(i+ SEP +item.initial()+ SEP +item.hint()+ SEP +item.buildAnswer()+ SEP +score+ SEP +item.target);	
 	});
 //	localStorage.setItem("ats_gg_needs_help", ko.toJSON(needs_help));
 	app.net_waiting(false); // deactivate the overlay so the user can continue

@@ -44,8 +44,8 @@
 							</div>
 
 							<div data-bind="visible: score()!=null">
-								<label data-bind="style: {backgroundColor: scoreToHSL(score()) }, text: buildAnswer()"></label> | <label data-bind="text: isPass() ? 'OK!' : 'Oops..' "></label>
-								<p><span data-bind="text: score"></span>/<span data-bind="text: target"></span></p>
+								<label data-bind="style: {backgroundColor: (isPass() ? 'hsl(120,80%,80%)' : 'hsl(30,80%,80%)' ) }, text: buildAnswer()"></label> | <label data-bind="text: isPass() ? 'OK!' : 'Oops..' "></label>
+<!-- 								<p><span data-bind="text: score"></span>/<span data-bind="text: target"></span></p> -->
 							</div>
 
 							<hr>

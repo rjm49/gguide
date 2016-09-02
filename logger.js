@@ -31,8 +31,16 @@ var Logger = function(app){
 	
 	this.log = function(msg){
 		console.log(msg);
+		var SEP = ",";
+		
+		var submission_type = "n/a";
+		if(app.phase()=="submitted")
+			submission_type = "pretest_results";
+		else if(app.phase()=="finised")
+			submission_type = "posttest_results";
+		
 		var this_date = new Date();
-		var s = this_date.toISOString() + " " + getEpochTimeStamp(this_date) + " " + app.author_id() + " " + app.track() + " " + app.phase()+ "| " + msg + "\n";
+		var s = this_date.toISOString() + SEP + getEpochTimeStamp(this_date) + SEP + app.author_id() + SEP + app.track() + SEP + submission_type + SEP + msg + "\n";
 	//	self.msgs.push(s);
 	
 		self.sendToServer(s);
