@@ -17,8 +17,11 @@
 </head>
 <body>
 	<div class="container">
-		<span data-bind="visible: phase()=='pretest'"><label>Author ID:</label><input data-bind="value: author_id"></input> <label>Track:</label><select data-bind="options: tracks, value: track"></select> <label>Concept:</label><select data-bind="options: concepts"></select></span>
-		<button data-bind="click: resetPhase">Reset</button>
+		<span data-bind="visible: phase()=='pretest'">
+		
+<!-- 			<label>Author ID:</label><input data-bind="value: author_id"></input> <label>Track:</label><select data-bind="options: tracks, value: track"></select> <label>Concept:</label><select data-bind="options: concepts"></select> -->
+		</span>
+<!--  	<button data-bind="click: resetPhase">Reset</button> -->
 		
 		<p><span data-bind="text: author_id"></span> / <span data-bind="text: track"></span> / <span data-bind="text: phase"></span></p>
 	</div>
@@ -81,10 +84,20 @@
 
 	<div id="buttons" class="container">
 		<p>
-			<button data-bind="click: nextPhase, visible: phase()!='finished' " type="button" class="btn btn-primary center-block">Next</button>
+			<button data-bind="click: nextPhase" type="button" class="btn btn-primary center-block">Next</button>
 		</p>
-		<p data-bind="text: phase"></p>		
 	</div>
+
+	<div class="overlay" data-bind="style: { height: phase() =='survey' ? '100%' : '0' }">
+		<div class="overlay-content">
+		<img src="./spin.gif">
+		<h1>Thanks for your help!</h1>
+		<p>Just one more thing - tell us how it went, to help us improve the test!</p>
+		<h1><a href="https://goo.gl/forms/f8saeToxlKumW7Mo1">Please take the survey - it's short! :)</a></h1>
+		</div>
+	</div>
+
+	<p data-bind="text: phase"></p>
 
 	<div class="overlay" data-bind="style: { height: net_waiting() ==true ? '100%' : '0' }">
 		<div class="overlay-content">
@@ -102,6 +115,6 @@
 	<script src="logger.js"></script>
 	<script src="rpc.js"></script>
 	<script src="gg.js"></script>
-
+	<script src="hw_scoring.js"></script>
 </body>
 </html>
