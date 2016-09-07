@@ -11,6 +11,18 @@
     margin-right:-4px;
 }
 
+.lesson {
+	background-color: #E0EAF8;
+	border-radius: 1em;
+	padding:1em;
+}
+
+.exercises {
+	background-color: #F8FBFE;
+	border-radius: 1em;
+	padding:1em;
+}
+
 /* The Overlay (background) */
 .overlay {
     /* Height & width depends on how you want to reveal the overlay (see JS below) */   
@@ -40,3 +52,7 @@
     color: #818181;
     display: block; /* Display block instead of inline */
 }
+
+.overlay-content p {
+	font-size: 20px;
+	}
