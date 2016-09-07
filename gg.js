@@ -9,6 +9,20 @@ function scoreToHSL(score){
 	return "hsl("+hue+",80%,80%)";
 }
 
+function makeid(){
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+}
+
+function maketrack(){	
+	var tracks = ['B','U','S','A'];
+	var track = tracks[Math.floor(Math.random()*4)];
+	console.log("selected track "+track);
+	return track;
+}
 
 /*
  * INITIALISE THE APP HERE
@@ -22,6 +36,7 @@ var AppViewModel = function(){
 	this.phase = ko.observable('pretest');
 	this.author_id = ko.observable('test1');
 	this.net_waiting = ko.observable(false);
+	this.survey = ko.observable(false);
 	
 	this.track.subscribe(function(newValue) {
 		if (newValue) { // Has focus
@@ -32,6 +47,9 @@ var AppViewModel = function(){
 			//localStorage.setItem('ats_gg_track', newValue);
 		}
 	});
+//	this.track(maketrack());
+	this.track("S");
+	this.author_id(makeid());
 	
 	this.questions = new ExerciseListModel();	
 	this.homework = new HomeworkListModel();
@@ -77,6 +95,9 @@ var nextPhase = function(){
 	} else if(app.phase() == "posttest"){
 		submit();
 		app.phase("finished");
+		//app.survey(true);
+	} else if(app.phase() == "finished"){
+		app.phase("survey");
 	}
 };
 
